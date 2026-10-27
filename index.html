@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Práctica 5 · Calculadora Geométrica</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="layout">
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+      <h1 class="navbar__marca">Calculadora Geométrica . 5cm52</h1>
+      <h2 class="navbar__marca">Christian Alberto Torales Perez</h2>
+      <nav class="navbar__links" aria-label="Navegación principal">
+        <a href="#" class="nav-link activo" data-seccion="inicio">Inicio</a>
+        <a href="#" class="nav-link" data-seccion="planas">Figuras planas</a>
+        <a href="#" class="nav-link" data-seccion="cuerpos">Cuerpos geométricos</a>
+      </nav>
+    </header>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar" aria-label="Menú de figuras">
+      <a href="#" class="side-link" data-seccion="inicio">⌂ Inicio</a>
+      <h2 class="sidebar__titulo">Figuras planas</h2>
+      <ul class="sidebar__lista" id="listaPlanas"></ul>
+      <h2 class="sidebar__titulo">Cuerpos geométricos</h2>
+      <ul class="sidebar__lista" id="listaCuerpos"></ul>
+    </aside>
+
+    <!-- ===== CONTENIDO ===== -->
+    <main class="contenido">
+
+      <!-- Inicio -->
+      <section id="inicio" class="seccion visible">
+        <div class="hero">
+          <h2 class="seccion__titulo">Calculadora geométrica</h2>
+          <p class="seccion__desc">
+            Calcula perímetros, áreas y volúmenes de figuras planas y cuerpos geométricos.
+            Elige una figura desde el menú lateral o desde las opciones de abajo.
+          </p>
+          <div class="hero__acciones">
+            <button class="btn btn--primario" data-seccion="planas">Figuras planas</button>
+            <button class="btn btn--secundario" data-seccion="cuerpos">Cuerpos geométricos</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Listado de figuras planas -->
+      <section id="planas" class="seccion">
+        <h2 class="seccion__titulo">Figuras planas</h2>
+        <p class="seccion__desc">Perímetro y área.</p>
+        <div class="tarjetas" id="gridPlanas"></div>
+      </section>
+
+      <!-- Listado de cuerpos -->
+      <section id="cuerpos" class="seccion">
+        <h2 class="seccion__titulo">Cuerpos geométricos</h2>
+        <p class="seccion__desc">Área total y volumen.</p>
+        <div class="tarjetas" id="gridCuerpos"></div>
+      </section>
+
+      <!-- Calculadora  -->
+      <section id="calculadora" class="seccion">
+        <div class="panel">
+          <div class="calc__encabezado">
+            <div>
+              <h2 class="seccion__titulo" id="calcTitulo"></h2>
+              <p class="seccion__desc" id="calcDesc"></p>
+            </div>
+            <button class="btn btn--secundario" id="btnVolver">← Volver</button>
+          </div>
+
+          <img class="ilustracion" id="calcImagen" src="" alt="">
+
+          <div class="formulas" id="calcFormulas"></div>
+
+          <form id="formCalc" novalidate autocomplete="off">
+            <div class="campos" id="campos"></div>
+            <div class="acciones">
+              <button type="button" class="btn btn--primario" id="btnCalcular">Calcular</button>
+              <button type="button" class="btn btn--secundario" id="btnLimpiar">Limpiar</button>
+            </div>
+          </form>
+
+          <div class="alerta oculto" id="alerta" role="alert"></div>
+          <div class="resultados oculto" id="resultados" aria-live="polite"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      Práctica 5 · Programación Web · UPIICSA – IPN · Christian Alberto Torales Pérez · 5CM52
+    </footer>
+  </div>
+
+  <!-- Lógica pura (sin DOM) -->
+  <script src="js/calculos.js"></script>
+  <script src="js/validacion.js"></script>
+  <!-- Manipulación del DOM -->
+  <script src="js/app.js"></script>
+</body>
+</html>

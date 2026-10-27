@@ -1,0 +1,114 @@
+/* Práctica 5 · Calculadora Geométrica */
+
+:root {
+  --arena: #f3e7d3;
+  --terracota: #b5471f;
+  --naranja: #e08a2e;
+  --amarillo: #e9c46a;
+  --cafe: #3b2414;
+  --rojo: #a4161a;
+  --verde: #5b6b2f;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--arena);
+  color: var(--cafe);
+}
+
+a { color: inherit; }
+ul { list-style: none; padding: 0; }
+
+.oculto { display: none; }
+
+/* ===== CSS Grid: estructura principal ===== */
+.layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "navbar  navbar"
+    "sidebar contenido"
+    "footer  footer";
+  min-height: 100vh;
+}
+
+.navbar    { grid-area: navbar; }
+.sidebar   { grid-area: sidebar; }
+.contenido { grid-area: contenido; padding: 1rem; }
+.footer    { grid-area: footer; padding: 1rem; text-align: center; }
+
+/* ===== Flexbox: alineación interna ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  background: var(--terracota);
+  color: #fff;
+}
+
+.navbar__links { display: flex; gap: 1rem; }
+.nav-link.activo { font-weight: bold; }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: var(--amarillo);
+}
+
+.side-link.activo { background: var(--naranja); }
+
+.seccion { display: none; }
+.seccion.visible { display: block; }
+
+.hero__acciones,
+.formulas,
+.acciones,
+.calc__encabezado { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.calc__encabezado { justify-content: space-between; align-items: flex-start; }
+
+.formulas, .campos { margin-bottom: 1rem; }
+.btn { padding: 0.4rem 0.8rem; }
+
+.tarjetas,
+.campos,
+.resultados { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+
+.tarjeta { display: flex; flex-direction: column; text-align: left; }
+
+.campo { display: flex; flex-direction: column; }
+
+.tarjeta__img { width: 100%; max-width: 160px; }
+.ilustracion { display: block; width: 200px; max-width: 100%; margin-bottom: 1rem; }
+
+.resultado { display: flex; flex-direction: column; padding: 0.5rem; background: var(--amarillo); }
+
+/* ===== Estados dinámicos (clases agregadas con JS) ===== */
+.campo--invalido .campo__input { border: 2px solid var(--rojo); }
+.campo--valido .campo__input { border: 2px solid var(--verde); }
+.campo__error { color: var(--rojo); }
+
+.alerta { margin-top: 1rem; padding: 0.5rem; }
+.alerta--error { color: var(--rojo); border: 1px solid var(--rojo); }
+.alerta--ok { color: var(--verde); border: 1px solid var(--verde); }
+
+.btn--primario { background: var(--terracota); color: #fff; }
+
+/* ===== Media Queries: diseño responsivo ===== */
+@media (max-width: 720px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "navbar"
+      "sidebar"
+      "contenido"
+      "footer";
+  }
+
+  .navbar { flex-direction: column; padding: 0.5rem; }
+}
